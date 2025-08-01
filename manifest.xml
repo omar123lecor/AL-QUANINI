@@ -4,7 +4,7 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="again"/>
+  <DisplayName DefaultValue="ALQUANONI"/>
   <Description DefaultValue="A template to get started."/>
   <IconUrl DefaultValue="https://localhost:3005/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3005/assets/icon-64.png"/>
@@ -73,9 +73,15 @@
         <bt:Image size="32" resid="Icon.32x32" />
         <bt:Image size="80" resid="Icon.80x80" />
       </Icon>
-      <Action xsi:type="ExecuteFunction">
-        <FunctionName>onContextMenuClick</FunctionName>
-      </Action>
+      <Action xsi:type="ShowTaskpane">
+                    <!--This is the key for auto-open to work, you need to set the TaskpaneId of the pane you want
+                    to open to the well-known value of Office.AutoShowTaskpaneWithDocument
+                    -->
+          <TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>
+          <!-- Provide a url resource id for the location that will be displayed on the task pane. -->
+          <SourceLocation resid="Commands.Url" />
+       </Action>
+
     </Control>
   </OfficeMenu>
 </ExtensionPoint>

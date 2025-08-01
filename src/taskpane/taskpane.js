@@ -100,9 +100,19 @@ async function fetchData(event) {
         const data = await response.json();
         connected = true;
         accessToken = data.access_token;
+        if (connected){
+        const loginForm = document.querySelector(".login-container");
+        loginForm.style.display = "none";
+        }
         console.log('Success:', data);
-        return data.access_token;
-    }catch(error) {      
+    }catch(error) {
+        const errorElement = document.getElementById("erreur");
+        errorElement.textContent = error.message || 'An error occurred during login.';
+        errorElement.style.color = "red";
+        errorElement.style.fontWeight = "bold";
+        errorElement.style.textAlign = "center";
+        errorElement.style.marginTop = "10px";
+        errorElement.style.marginBottom = "10px";     
         console.error('Error:', error);
     }
 }

@@ -205,11 +205,10 @@ img {
     align-items: center;
 }
 .container {
-   
     border: 1px solid rgb(184, 176, 176);
     border-radius: 2%;
-    height: 65vh;
-    width: 70%;
+    height: 60vh;
+    width: 90%;
     max-width: 400px;
     background-color: hsl(0, 0%, 100%);
     box-shadow: 3px 3px 15px rgba(111, 94, 94, 0.2);
@@ -244,6 +243,7 @@ h2 {
 #info {
     text-align: center;
     color: rgb(136, 136, 129) ;
+    margin: 3%;
 }
 .box-info {
     margin-top: 2%;
@@ -255,7 +255,6 @@ h2 {
 #login-button button {
     padding: 2%;
     width: 70%;
-
     border-radius: 5px;
     border: solid 1px rgb(184, 176, 176);
     background-color: rgb(40, 35, 35);
