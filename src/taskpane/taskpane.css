@@ -1,0 +1,271 @@
+/*body {
+
+    background-image: url(images/sea.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}*/
+/*li {
+    width: 100px;
+}
+li:hover {
+    background-color: yellow;
+}
+li:not(:hover) {
+    background-color: lightblue;
+}*/
+/*li:nth-child(7) {
+    background-color: lightgreen;
+}*/
+
+/*.dropdown button{
+    font-size: 1.1em;
+    background-color: gray;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.dropdown {
+    display: inline;
+}
+a {
+    text-decoration: none;
+    padding: 10px 15px;
+    color: black;
+    display: block;
+}
+a:hover {
+    background-color: rgb(247, 114, 114);
+    color: white;
+}
+.dropdown .content {
+    background-color: rgb(255, 249, 249);
+    position: absolute;
+    min-width: 100px;
+    box-shadow: 3px 3px 5px rgba(247, 114, 114, 0.2);
+    display: none;
+}
+.dropdown:hover .content {
+    display: block;
+}
+*/
+/*
+main {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+body {
+    margin: 0px;
+}
+h1 {
+    text-align: center;
+}
+
+.navbar ul {
+    list-style-type: none;
+    background-color: grey;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.navbar a {
+    text-decoration: none;
+    color: rgb(239, 239, 239);
+    padding: 15px;
+    display: block;
+    text-align: center;
+}
+.navbar a:hover {
+    background-color: rgb(44, 39, 39);
+}
+.navbar li {
+    float: left;
+}*/
+/*
+body {
+    margin: 0px;
+    font-family: Arial, sans-serif;
+}
+header {
+    text-align: center;
+    background-color: rgb(194, 204, 207);
+    padding: 25px;
+}
+
+.navbar {
+    background-color: rgb(14, 20, 21);
+    height: 50px;
+    
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+li > a {
+    text-decoration: none;
+    color: aliceblue;
+}
+.navbar li {
+    float: left;
+    padding: 15px 10px;
+    margin-left: 15px;
+    
+}
+* {
+    box-sizing: border-box;
+}
+main {
+    overflow: hidden;
+}
+aside {
+    width: 20%;
+    float: left;
+    padding: 10px;
+}
+section {
+    width: 40%;
+    float: left;
+    padding: 10px;
+}
+article {
+    width: 40%;
+    float: left;
+    padding: 10px;
+}
+footer {
+    text-align: center;
+    background-color: rgb(194, 204, 207);
+    padding: 25px;
+}
+@media screen and (max-width: 768px) {
+    aside, section, article {
+        width: 100%;
+        float: none;
+    }
+}*/
+/*.gallery {
+    display: inline-block;
+    border: 1px solid hsl(0, 8%, 72%);
+    margin: 15px;
+    width: 200px;
+    
+}
+.gallery .description{
+    padding: 15px;   
+    text-align: center;
+    
+}
+img {
+    width : 100%;
+    
+}
+.gallery:hover {
+    border-color: hsl(0, 67%, 75%);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+}*/
+/*.container {
+    display: flex;
+    height: 90vh;
+    border: solid 2px black;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5em;
+    
+
+}
+.box {
+    width: 150px;
+    height: 150px;
+    font-size: 8em;
+    text-align: center;
+    border-radius: 15px;
+    
+}
+#box1 {
+    background-color: rgb(201, 123, 123);
+}
+#box2 {
+    background-color: rgb(82, 151, 82);
+}
+#box3 {
+    background-color: rgb(123, 123, 201);
+}
+#box4 {
+    background-color: rgb(201, 201, 123);
+    align-self: self-end;
+}*/
+
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+   
+    border: 1px solid rgb(184, 176, 176);
+    border-radius: 2%;
+    height: 65vh;
+    width: 70%;
+    max-width: 400px;
+    background-color: hsl(0, 0%, 100%);
+    box-shadow: 3px 3px 15px rgba(111, 94, 94, 0.2);
+
+}
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.9em;
+}
+.input-box {
+    margin-left: 0;
+    margin-top: 0%;
+    text-align: center;
+}
+
+.input-box input {
+    padding: 2%;
+    border: solid 1px black;
+    width: 70%;
+    border: solid 1px rgb(184, 176, 176);
+    border-radius: 5px;
+}
+.input-label {
+    margin-bottom: 1px;
+    font-size: 1em;
+    padding-bottom: 4px;
+    margin-left: 12%;
+    margin-top: 0%;
+    padding: 2%;
+}
+#info {
+    text-align: center;
+    color: rgb(136, 136, 129) ;
+}
+.box-info {
+    margin-top: 2%;
+}
+#login-button {
+    text-align: center;
+    margin-top: 8%;
+}
+#login-button button {
+    padding: 2%;
+    width: 70%;
+
+    border-radius: 5px;
+    border: solid 1px rgb(184, 176, 176);
+    background-color: rgb(40, 35, 35);
+    color: white;
+    font-size: 1.1em;
+}
+
+#login-button button:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
