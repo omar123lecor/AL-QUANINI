@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="taskpane.css">
     <script src="https://kit.fontawesome.com/869887d293.js" crossorigin="anonymous"></script>
     <script src="taskpane.js" defer></script>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -90,12 +91,13 @@
             Omar
         </div>
     </div>-->
+    <!--This is the Login Container-->
     <div class="login-container">
         <div class="container">
     <form action="" id="login-form">
             <h2>Bon retour</h2>
             <p id="info">Entrer Votre email et mot de passe pour 
-                acceder à votre <br> compte</p>
+                acceder à votre compte</p>
             </p>
             <div class="box-info">
             <div class="input-label">
@@ -119,5 +121,29 @@
             <p id="erreur"></p>
     </form>
     </div>
+    </div>
+    <div class="mainContainer">
+        
+        <header class="header">
+                    <img src="/assets/shiftbricks-logo.png" width="150px" alt="">
+                    <p id="textAnime" style="font-weight: bold;">WELCOME TO Al QUANONI</p>              
+        </header>
+        <main class="main">
+                <div class="box-1">
+                <p>Once the text is selected click the button below</p>
+                <hr>
+                <p><b>text selected : </b></p>
+                <div class="userTexte">
+                    <p id="selection" style="color: black;"></p>
+                </div>
+                <p><b>AL QANONI response : </b></p>
+                <div class="userTexte">
+                    
+                </div>
+                <button id="submitButton">Send To al QANONI</button>
+                <button id="logout">logout</button>
+                </div>
+        </main>
+
     </div>
 </html>

@@ -55,9 +55,6 @@ try {
 doChores()*/
 
 
-//const jsonSting = JSON.stringify(obj)
-
-
 const BASE_URL = "https://cors-anywhere.herokuapp.com/https://alqanoonibackendapp-bpcsb7hheqhkg0dg.francecentral-01.azurewebsites.net";
 /*
 fetch(`${BASE_URL}/login`, {
@@ -77,11 +74,12 @@ fetch(`${BASE_URL}/login`, {
 .then(data => console.log('Success:', data))
 .catch(error => console.error('Error:', error));
 */
-let connected = false;
+
 let accessToken = null;
 
 async function fetchData(event) {
     event.preventDefault(); // Prevent the default form submission behavior
+    
     try {
         const payload = {
             username: document.getElementById("username").value,
@@ -98,12 +96,13 @@ async function fetchData(event) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        connected = true;
         accessToken = data.access_token;
-        if (connected){
+        localStorage.setItem("accessToken",accessToken);
         const loginForm = document.querySelector(".login-container");
         loginForm.style.display = "none";
-        }
+        const contain2 = document.querySelector(".mainContainer")
+        contain2.style.display = "block";
+        
         console.log('Success:', data);
     }catch(error) {
         const errorElement = document.getElementById("erreur");
@@ -116,4 +115,77 @@ async function fetchData(event) {
         console.error('Error:', error);
     }
 }
-document.getElementById("login-form").addEventListener("submit",fetchData);
+
+
+
+
+/*const firstContainer = document.querySelector(".login-container");
+firstContainer.style.display = "none"
+*/
+function getSelectedTextFromWord() {
+    return new Promise((resolve, reject) => {
+      Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
+        if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+          resolve(asyncResult.value);
+        } else {
+          reject(asyncResult.error.message);
+        }
+      });
+    });
+  }
+
+  async function displayTexteSelected() {
+    let selectedText = "";
+    try {
+      selectedText = await getSelectedTextFromWord();
+      if (!selectedText || selectedText.trim().length === 0) {
+      throw new Error("No text is selected yet...");
+    }
+      document.getElementById("selection").innerHTML = `🔍<strong>${selectedText}</strong>`;
+    } catch (e) {
+      document.getElementById("selection").textContent = `${e}`;
+      return;
+    }
+  }
+
+
+const originalLoginDisplay = getComputedStyle(document.querySelector(".login-container")).display;
+const originalMainDisplay = getComputedStyle(document.querySelector(".mainContainer")).display;
+
+function startApp() {
+    const loginForm = document.querySelector(".login-container");
+    const contain2 = document.querySelector(".mainContainer");
+
+    if (accessToken) {
+        loginForm.style.display = "none";
+        contain2.style.display = originalMainDisplay;
+        displayTexteSelected();
+    } else {
+        contain2.style.display = "none";
+        loginForm.style.display = originalLoginDisplay;
+        document.getElementById("login-form").addEventListener("submit", fetchData);
+    }
+}
+
+
+
+function logout() {
+    localStorage.removeItem("accessToken")
+    accessToken = null;
+    startApp();
+}
+
+
+
+Office.onReady((info) => {
+   
+    if (info.host === Office.HostType.Word) {
+        accessToken = localStorage.getItem("accessToken");
+        startApp();
+        // Always run when the task pane is opened from context menu
+       
+    }
+    document.getElementById("submitButton").addEventListener("click",displayTexteSelected);
+    document.getElementById("logout").addEventListener("click",logout);
+
+});

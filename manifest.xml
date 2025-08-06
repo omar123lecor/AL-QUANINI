@@ -79,7 +79,7 @@
                     -->
           <TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>
           <!-- Provide a url resource id for the location that will be displayed on the task pane. -->
-          <SourceLocation resid="Commands.Url" />
+          <SourceLocation resid="Taskpane.Url" />
        </Action>
 
     </Control>
