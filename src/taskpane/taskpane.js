@@ -55,6 +55,8 @@ try {
 doChores()*/
 
 
+const originalLoginDisplay = getComputedStyle(document.querySelector(".login-container")).display;
+const originalMainDisplay = getComputedStyle(document.querySelector(".mainContainer")).display;
 const BASE_URL = "https://cors-anywhere.herokuapp.com/https://alqanoonibackendapp-bpcsb7hheqhkg0dg.francecentral-01.azurewebsites.net";
 /*
 fetch(`${BASE_URL}/login`, {
@@ -134,6 +136,37 @@ function getSelectedTextFromWord() {
     });
   }
 
+
+  async function searchWithSelectedText(selectedText) {
+    if(!accessToken){
+        throw new Error("Not authenticated. Please log in first.");
+    }
+
+    const payload = {
+        query: selectedText,
+        filters: {},           
+        sort: "score"          
+    };
+    
+    const response = await fetch(`${BASE_URL}/alkanoonapi/v1/search/search`,{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`
+        },
+        body: JSON.stringify(payload)
+    });
+
+    if(!response.ok){
+        throw new Error(`Search API error: ${response.status}`);
+    }
+
+    return response.json();
+
+  }
+
+
+
   async function displayTexteSelected() {
     let selectedText = "";
     try {
@@ -142,27 +175,31 @@ function getSelectedTextFromWord() {
       throw new Error("No text is selected yet...");
     }
       document.getElementById("selection").innerHTML = `🔍<strong>${selectedText}</strong>`;
+      //call the API
+      const result = await searchWithSelectedText(selectedText);
+      //Show result
+      document.querySelector("#output-text").innerHTML = `<pre>${JSON.stringify(result,null,2)}</pre>`;
     } catch (e) {
-      document.getElementById("selection").textContent = `${e}`;
+      document.getElementById("output-text").textContent = `${e}`;
       return;
     }
   }
 
 
-const originalLoginDisplay = getComputedStyle(document.querySelector(".login-container")).display;
-const originalMainDisplay = getComputedStyle(document.querySelector(".mainContainer")).display;
 
 function startApp() {
+    
     const loginForm = document.querySelector(".login-container");
     const contain2 = document.querySelector(".mainContainer");
 
     if (accessToken) {
         loginForm.style.display = "none";
-        contain2.style.display = originalMainDisplay;
+        contain2.style.display = "block";
         displayTexteSelected();
     } else {
         contain2.style.display = "none";
-        loginForm.style.display = originalLoginDisplay;
+        loginForm.style.display = "flex";
+
         document.getElementById("login-form").addEventListener("submit", fetchData);
     }
 }
@@ -174,10 +211,12 @@ function logout() {
     accessToken = null;
     startApp();
 }
-
+    
 
 
 Office.onReady((info) => {
+    
+
    
     if (info.host === Office.HostType.Word) {
         accessToken = localStorage.getItem("accessToken");
