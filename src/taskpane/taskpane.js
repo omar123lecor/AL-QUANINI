@@ -83,22 +83,24 @@ async function fetchData(event) {
     event.preventDefault(); // Prevent the default form submission behavior
     
     try {
-        const payload = {
+        const payload = { 
             username: document.getElementById("username").value,
             password: document.getElementById("password").value
-        }
+        };
+        
         const response = await fetch(`${BASE_URL}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: new URLSearchParams(payload)
+            body: new URLSearchParams(payload),
         });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
         accessToken = data.access_token;
+        
         localStorage.setItem("accessToken",accessToken);
         const loginForm = document.querySelector(".login-container");
         loginForm.style.display = "none";
