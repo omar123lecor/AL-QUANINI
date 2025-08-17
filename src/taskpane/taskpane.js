@@ -77,6 +77,21 @@ fetch(`${BASE_URL}/login`, {
 .catch(error => console.error('Error:', error));
 */
 
+function renderQanoniCards(data) {
+  const container = document.getElementById('response-container');
+  container.innerHTML = ''; // Vide le container
+
+  data.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'response-card';
+    card.innerHTML = `
+      <div class="title">${item.title || ''}</div>
+      <div class="text">${item.text || ''}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
 let accessToken = null;
 
 async function fetchData(event) {
@@ -179,8 +194,13 @@ function getSelectedTextFromWord() {
       document.getElementById("selection").innerHTML = `🔍<strong>${selectedText}</strong>`;
       //call the API
       const result = await searchWithSelectedText(selectedText);
+       // Si la réponse contient un tableau sous un autre nom, adapte ici
+      const hits = result.hits || result; 
+
+    // Affiche uniquement titre + texte
+      renderQanoniCards(hits);
       //Show result
-      document.querySelector("#output-text").innerHTML = `<pre>${JSON.stringify(result,null,2)}</pre>`;
+     // document.querySelector("#output-text").innerHTML = `<pre>${JSON.stringify(result,null,2)}</pre>`;
     } catch (e) {
       document.getElementById("output-text").textContent = `${e}`;
       return;
