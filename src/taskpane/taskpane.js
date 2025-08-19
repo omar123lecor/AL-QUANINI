@@ -125,6 +125,8 @@ async function fetchData(event) {
         console.log('Success:', data);
     }catch(error) {
         const errorElement = document.getElementById("erreur");
+        if(errorElement) {
+        // Remove any existing error message
         errorElement.textContent = error.message || 'An error occurred during login.';
         errorElement.style.color = "red";
         errorElement.style.fontWeight = "bold";
@@ -132,6 +134,7 @@ async function fetchData(event) {
         errorElement.style.marginTop = "10px";
         errorElement.style.marginBottom = "10px";     
         console.error('Error:', error);
+           }
     }
 }
 
@@ -202,7 +205,7 @@ function getSelectedTextFromWord() {
       //Show result
      // document.querySelector("#output-text").innerHTML = `<pre>${JSON.stringify(result,null,2)}</pre>`;
     } catch (e) {
-      document.getElementById("output-text").textContent = `${e}`;
+      document.getElementById("output-textt").textContent = `${e}`;
       return;
     }
   }
@@ -244,7 +247,6 @@ Office.onReady((info) => {
         accessToken = localStorage.getItem("accessToken");
         startApp();
         // Always run when the task pane is opened from context menu
-       
     }
     document.getElementById("submitButton").addEventListener("click",displayTexteSelected);
     document.getElementById("logout").addEventListener("click",logout);
