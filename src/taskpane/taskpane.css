@@ -199,154 +199,160 @@ img {
 }*/
 
 .login-container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container {
-    border: 1px solid rgb(184, 176, 176);
-    border-radius: 2%;
-    height: 45vh;
-    min-height: 350px;
-    /*min-width: 380px;*/
-    
-    max-width: 400px;
-    background-color: hsl(0, 0%, 100%);
-    box-shadow: 3px 3px 15px rgba(111, 94, 94, 0.2);
+  border: 1px solid rgb(184, 176, 176);
+  border-radius: 2%;
+  height: 45vh;
+  min-height: 350px;
+  /*min-width: 380px;*/
 
+  max-width: 400px;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 3px 3px 15px rgba(111, 94, 94, 0.2);
 }
 h2 {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 1.9em;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.9em;
 }
 .input-box {
-    margin-left: 0;
-    margin-top: 0%;
-    text-align: center;
+  margin-left: 0;
+  margin-top: 0%;
+  text-align: center;
 }
 
 .input-box input {
-    padding: 2%;
-    border: solid 1px black;
-    width: 70%;
-    border: solid 1px rgb(184, 176, 176);
-    border-radius: 5px;
+  padding: 2%;
+  border: solid 1px black;
+  width: 70%;
+  border: solid 1px rgb(184, 176, 176);
+  border-radius: 5px;
 }
 .input-label {
-    margin-bottom: 1px;
-    font-size: 1em;
-    padding-bottom: 4px;
-    margin-left: 12%;
-    margin-top: 0%;
-    padding: 2%;
+  margin-bottom: 1px;
+  font-size: 1em;
+  padding-bottom: 4px;
+  margin-left: 12%;
+  margin-top: 0%;
+  padding: 2%;
 }
 #info {
-    text-align: center;
-    color: rgb(136, 136, 129) ;
-    margin: 3%;
+  text-align: center;
+  color: rgb(136, 136, 129);
+  margin: 3%;
 }
 .box-info {
-    margin-top: 2%;
+  margin-top: 2%;
 }
 #login-button {
-    text-align: center;
-    
+  text-align: center;
 }
 #login-button button {
-    padding: 2%;
-    width: 70%;
-    margin-top: 7%;
-    border-radius: 5px;
-    border: solid 1px rgb(184, 176, 176);
-    background-color: rgb(40, 35, 35);
-    color: white;
-    font-size: 1.1em;
+  padding: 2%;
+  width: 70%;
+  margin-top: 7%;
+  border-radius: 5px;
+  border: solid 1px rgb(184, 176, 176);
+  background-color: rgb(40, 35, 35);
+  color: white;
+  font-size: 1.1em;
 }
 
 #login-button button:hover {
-    background-color: rgb(0, 0, 0);
-    color: white;
-    cursor: pointer;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: rgb(0, 0, 0);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 @media screen and (max-width: 700px) {
-    .container {
-        width: 90%;
-        min-width: 200px;
-    }
+  .container {
+    width: 90%;
+    min-width: 200px;
+  }
 }
 
 header {
-    background-color: rgb(194, 204, 207);
-    padding: 15px;
+  background-color: rgb(194, 204, 207);
+  padding: 15px;
 }
 
 header img {
-    float: left;
-    margin-top: 6px;
+  float: left;
+  margin-top: 6px;
 }
 header p {
-    text-align: right;
-    
+  text-align: right;
 }
 
- body {
-    margin: 0;
- }
+body {
+  margin: 0;
+}
 
- main {
+main {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 8px;
+}
+main .box-1 {
+  height: 100%;
+  
+  
+  width: 90%;
+  max-width: 600px;
+ 
+  position: relative;
+  background-color: hsl(0, 0%, 100%);
+}
+
+.userTexte {
     display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    margin: 8px;
+    align-items: center;  /* centre verticalement */
+    gap: 10px;
+}
 
- }
- main .box-1 {
-    height: 450px;
-    border: solid 1px rgb(168, 156, 156);
-    box-shadow: 3px 3px 15px rgba(111, 94, 94, 0.2);
-    width: 80%;
-    max-width: 400px;
-    border-radius: 15px;
-    position: relative;
-    background-color: hsl(208, 50%, 95%);
- }
-#submitButton  {
-    position: absolute;
-    bottom: 0;
-    left: 40%;
-    margin-bottom: 14px;
-    border: solid 1px rgb(184, 176, 176);
-    border-radius: 5px;
-    width: 50%;
-    background-color: rgb(194, 204, 207);
-    color: rgb(0, 0, 0);
-    font-size: 0.8em;
-    padding: 5px;
-    
- }
- #logout {
-    position: absolute;
-    bottom: 0;
-    left: 10%;
-    margin-bottom: 14px;
-    border: solid 1px rgb(184, 176, 176);
-    border-radius: 5px;
-    width: 20%;
-    background-color: rgb(194, 204, 207);
-    color: rgb(0, 0, 0);
-    font-size: 0.8em;
-    padding: 5px;
- }
+
+
+
+
+
+#submitButton {
+  top: 0;
+  left: 40%;
+  margin-bottom: 14px;
+  border: solid 1px rgb(184, 176, 176);
+  border-radius: 5px;
+ 
+  background-color: rgb(194, 204, 207);
+  color: rgb(0, 0, 0);
+  font-size: 0.8em;
+  padding: 5px;
+}
+#logout {
+  
+
+  margin-top: 8px;
+  margin-left: 5px;
+  border: solid 1px rgb(184, 176, 176);
+  border-radius: 5px;
+  
+  background-color: rgb(230, 238, 240);
+  color: rgb(0, 0, 0);
+  font-size: 0.8em;
+  padding: 5px;
+}
 
 .box-1 button:hover {
-    box-shadow: 3px 3px 10px rgb(67, 63, 63);
-    cursor: pointer;
-    background-color: rgb(91, 98, 102);
-    color: aliceblue;
+  box-shadow: 3px 3px 10px rgb(67, 63, 63);
+  cursor: pointer;
+  background-color: rgb(91, 98, 102);
+  color: aliceblue;
 }
 /*.userTexte {
     width: 80%;
@@ -358,43 +364,51 @@ header p {
     overflow: scroll;
 }*/
 
-.outputTexte {
-    width: 80%;
-    height: 200px;
-    border: solid 1px black;
-    margin-left: 10%;
-    margin-bottom: 5%;
-    border-radius: 12px;
-    overflow: scroll;
-}
+/*.outputTexte {
+  width: 85%;
+  height: 72%;
+  border: solid 1px rgb(239, 232, 232);
+  margin-left: 10%;
+  margin-bottom: 5%;
+  border-radius: 12px;
+  overflow: scroll;
+}*/
 .outputTexte p {
-    font-size: 1.3em;
+  font-size: 1.3em;
 }
- main p {
-    text-align: center;
-    color: gray;
- }
+main p {
+  text-align: center;
+  color: gray;
+}
 
 .hidden {
   display: none !important;
 }
 
- #selection {
-    margin-left: 3px;
-    margin-top: 2px;
-    text-align: center;
-    font-size: 1em;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
- }
- #output-text {
-    margin-left: 3px;
-    margin-top: 2px;
-    text-align: left;
-    font-size: 0.8em;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
- }
 
- .response-card {
+
+#selection {
+  margin-left: 20%;
+  float: left;
+  height: 20px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  border: solid 1px rgb(184, 176, 176);
+  border-radius: 5px;
+  width: 60%;
+  text-align: center;
+  font-size: 1em;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+#output-text {
+  margin-left: 3px;
+  margin-top: 2px;
+  text-align: left;
+  font-size: 0.8em;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.response-card {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 12px;
@@ -410,3 +424,37 @@ header p {
 .response-card .text {
   color: #333;
 }
+
+#pagination-controls {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+#pagination-controls button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#pagination-controls button:hover {
+  background: #0078d4;
+  color: white;
+  border-color: #0078d4;
+  transform: translateY(-2px);
+}
+
+#pagination-controls button.active-page {
+  background: #0078d4;
+  color: #fff;
+  font-weight: bold;
+  border-color: #0078d4;
+  box-shadow: 0 3px 8px rgba(0, 120, 212, 0.3);
+}
+

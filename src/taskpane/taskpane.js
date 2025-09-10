@@ -1,58 +1,4 @@
-/*function walkDog(){
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-        const waldog = true;
-        if(waldog){
-            resolve("Walking the dog");
-        }
-        else{
-            reject("Dog is not ready to walk");
-        }
-        })
-        
-    })
-}
-function cleankitchen(){
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            const kitchenClean = true;
-        if(kitchenClean){
-            resolve("Kitchen is clean");
-        }
-        else{
-            reject("Kitchen is dirty");
-        }
-        })
-})
-}
-function takeOutTrash(){
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=> {
-        const trashTakenOut = false;
-        if(trashTakenOut){  
-            resolve("Trash has been taken out");
-        }   
-        else{
-            reject("Trash is still there");
-        }
-    },500)
-    })
-}
 
-async function doChores() {
-try {
-    const trash = await takeOutTrash();
-        console.log(trash);
-    const dog = await walkDog();
-    console.log(dog);
-    const kitchen = await cleankitchen();
-    console.log(kitchen);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-doChores()*/
 
 
 const originalLoginDisplay = getComputedStyle(document.querySelector(".login-container")).display;
@@ -77,20 +23,98 @@ fetch(`${BASE_URL}/login`, {
 .catch(error => console.error('Error:', error));
 */
 
-function renderQanoniCards(data) {
-  const container = document.getElementById('response-container');
-  container.innerHTML = ''; // Vide le container
+let currentPage = 1;
+let itemsPerPage = 4;
+let currentData = [];
 
-  data.forEach(item => {
+let fileMap = {};
+
+// Charger tous les fichiers une fois
+/*async function loadFileMap() {
+ try {
+  const res = await fetch(`${BASE_URL}/alkanoonapi/v1/search/filters/files`, {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "X-Requested-With": "XMLHttpRequest",
+      ...(accessToken ? { "Authorization": `Bearer ${accessToken}` } : {})
+    }
+  });
+
+  const data = await res.json();
+
+  // Afficher joliment le JSON dans ton add-in
+  document.getElementById("wanna").textContent = JSON.stringify(data, null, 2);
+
+} catch (error) {
+  document.getElementById("wanna").textContent = `Erreur: ${error.message}`;
+}
+}*/
+
+
+
+function renderQanoniCards(data, page = 1) {
+  currentData = data; 
+  let container = document.getElementById('response-container');
+  if (!container) {
+      container = document.createElement('div');
+      container.id = 'response-container';
+      document.querySelector('.box-1').appendChild(container);
+  }
+  let pagination = document.getElementById('pagination-controls');
+  if (!pagination) {
+      pagination = document.createElement('div');
+      pagination.id = 'pagination-controls';
+      document.querySelector('.box-1').appendChild(pagination);
+  }
+  container.innerHTML = '';
+  pagination.innerHTML = '';
+
+  // calcul de la plage d’éléments à afficher
+  const start = (page - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const paginatedItems = data.slice(start, end);
+
+  // afficher les cartes
+  paginatedItems.forEach( async item => {
+    
     const card = document.createElement('div');
     card.className = 'response-card';
+    const link = await fetch(`${BASE_URL}/alkanoonapi/v1/browser/files/${item.file_id}`,{
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`,
+            
+        }
+    });
+    const linkData = await link.json();
+    //const linkhref = `${BASE_URL}/alkanoonapi/v1/browser/files/${item.file_id}`;
+
     card.innerHTML = `
       <div class="title">${item.title || ''}</div>
       <div class="text">${item.text || ''}</div>
+      <a href="${linkData.file_path}" target="_blank"  class="file-link">view source</a>
     `;
     container.appendChild(card);
   });
+
+  // pagination buttons
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+  if (totalPages > 1) {
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement('button');
+      btn.textContent = i;
+      btn.className = (i === page) ? "active-page" : "";
+      btn.addEventListener("click", () => {
+        currentPage = i;
+        renderQanoniCards(currentData, currentPage);
+      });
+      pagination.appendChild(btn);
+    }
+  }
 }
+
 
 let accessToken = null;
 
@@ -116,7 +140,7 @@ async function fetchData(event) {
         const data = await response.json();
         accessToken = data.access_token;
         
-        localStorage.setItem("accessToken",accessToken);
+        localStorage.setItem("token",accessToken);
         const loginForm = document.querySelector(".login-container");
         loginForm.style.display = "none";
         const contain2 = document.querySelector(".mainContainer")
@@ -189,19 +213,26 @@ function getSelectedTextFromWord() {
 
   async function displayTexteSelected() {
     let selectedText = "";
+    document.getElementById("output-textt").textContent = "";
     try {
-      selectedText = await getSelectedTextFromWord();
-      if (!selectedText || selectedText.trim().length === 0) {
-      throw new Error("No text is selected yet...");
+      if (document.getElementById("selection").value.trim().length == 0) {
+        selectedText = await getSelectedTextFromWord();
+        if (!selectedText || selectedText.trim().length === 0) {
+        throw new Error("No text is selected yet...");
+      }
+      document.getElementById("selection").value = `${selectedText}`;
     }
-      document.getElementById("selection").innerHTML = `🔍<strong>${selectedText}</strong>`;
-      //call the API
+    else{
+        selectedText = document.getElementById("selection").value.trim();
+    }
       const result = await searchWithSelectedText(selectedText);
+      //call the API
        // Si la réponse contient un tableau sous un autre nom, adapte ici
       const hits = result.hits || result; 
-
+     // await loadFileMap();
     // Affiche uniquement titre + texte
-      renderQanoniCards(hits);
+      currentPage = 1;
+      renderQanoniCards(hits, 1);
       //Show result
      // document.querySelector("#output-text").innerHTML = `<pre>${JSON.stringify(result,null,2)}</pre>`;
     } catch (e) {
@@ -232,23 +263,22 @@ function startApp() {
 
 
 function logout() {
-    localStorage.removeItem("accessToken")
+    localStorage.removeItem("token")
     accessToken = null;
     startApp();
 }
-    
-
 
 Office.onReady((info) => {
     
 
    
     if (info.host === Office.HostType.Word) {
-        accessToken = localStorage.getItem("accessToken");
+        accessToken = localStorage.getItem("token");
         startApp();
         // Always run when the task pane is opened from context menu
     }
     document.getElementById("submitButton").addEventListener("click",displayTexteSelected);
     document.getElementById("logout").addEventListener("click",logout);
-
+    
 });
+

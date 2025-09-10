@@ -3,95 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="taskpane.css">
-    <script src="https://kit.fontawesome.com/869887d293.js" crossorigin="anonymous"></script>
-    <script src="taskpane.js" defer></script>
+    
     <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script src="taskpane.js" defer></script>
+    <link rel="stylesheet" href="taskpane.css">
     <title>Document</title>
 </head>
 <body>
-    <!--<h1>Omar Sabor</h1>
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="product.html">Products</a></li>
-            <li><a href="Contact.html">Contact</a></li>
-        </ul>
-
-    </nav>
-    <main>
-        <h3>This is the home page</h3>
-        <p>Lorem ipsum dolor sit amet co
-            nsectetur adipisicing elit. 
-            Ipsum dicta nisi aperiam quos 
-            voluptates adipisci enim
-             consequatur similique. 
-             Eveniet at laudantium iusto.
-              Blanditiis, atque cupiditate.
-               Eos magni dicta aliquam quisquam
-               .</p>
-    </main>-->
-    <!--<header>
-        <h2>Hello , Welcome to Alkanoni</h2>
-    </header>
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="product.html">Products</a></li>
-            <li><a href="Contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    <main>
-        <aside>
-            <h2>This is aside</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore saepe nulla, dolores obcaecati a commodi fuga veritatis quisquam! Totam dolore vero dignissimos earum aspernatur! Quaerat, doloribus? Adipisci optio dolore assumenda!</p>
-        </aside>
-
-        <section>
-            <h2>This is a section</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore saepe nulla, dolores obcaecati a commodi fuga veritatis quisquam! Totam dolore vero dignissimos earum aspernatur! Quaerat, doloribus? Adipisci optio dolore assumenda!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore saepe nulla, dolores obcaecati a commodi fuga veritatis quisquam! Totam dolore vero dignissimos earum aspernatur! Quaerat, doloribus? Adipisci optio dolore assumenda!</p>
-
-        </section>
-
-        <article>
-            <h2>This is an article</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore saepe nulla, dolores obcaecati a commodi fuga veritatis quisquam! Totam dolore vero dignissimos earum aspernatur! Quaerat, doloribus? Adipisci optio dolore assumenda!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore saepe nulla, dolores obcaecati a commodi fuga veritatis quisquam! Totam dolore vero dignissimos earum aspernatur! Quaerat, doloribus? Adipisci optio dolore assumenda!</p>
-
-        </article>
-    </main>
-    <footer>
-        <h2>Footer</h2>
-    </footer>-->
-    <!--
-    <div class="gallery">
-        <a href="linkedin.com/in/omar-sabor-a86a67266">
-        <img src="images/me.jpeg" alt="me" width="200">
-        </a>
-        <div class="description">
-            Omar
-        </div>
-    </div>
-    <div class="gallery">
-        <a href="linkedin.com/in/omar-sabor-a86a67266">
-        <img src="images/me.jpeg" alt="me" width="200">
-        </a>
-        <div class="description">
-            Omar
-        </div>
-    </div>
-    <div class="gallery">
-        <a href="linkedin.com/in/omar-sabor-a86a67266">
-        <img src="images/me.jpeg" alt="me" width="200">
-        </a>
-        <div class="description">
-            Omar
-        </div>
-    </div>-->
-    <!--This is the Login Container-->
+   
     <div class="login-container">
         <div class="container">
     <form action="" id="login-form">
@@ -128,22 +47,30 @@
                     <img src="/assets/shiftbricks-logo.png" width="150px" alt="">
                     <p id="textAnime" style="font-weight: bold;">WELCOME TO Al QUANONI</p>              
         </header>
+        <button id="logout">Quitter</button>
         <main class="main">
                 <div class="box-1">
-                <p>Once the text is selected click the button below</p>
-                <hr>
+                    
                 <p><b>Résultat de la recherche de :  </b></p>
                 <div class="userTexte">
-                    <p id="selection" style="color: black;"></p>
+                   
+                    <input type="text" id="selection" placeholder="Enter text here">
+                    
+                    <button id="submitButton">Search</button>
+                   <!-- <p id="selection" style="color: black;"></p>-->
                 </div>
-                <p><b>AL QANONI response : </b></p>
-                <div class="outputTexte" id="output-textt">
-                    <div id="response-container"></div>
-                </div>
-                <button id="submitButton">Send To al QANONI</button>
-                <button id="logout">logout</button>
+
+                <p id="output-textt"></p>
+                
+                
+                
                 </div>
         </main>
+        <p id="wanna"></p>
 
     </div>
+    
+</body>
+        
+    
 </html>

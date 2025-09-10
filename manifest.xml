@@ -54,12 +54,33 @@
                   <SourceLocation resid="Taskpane.Url"/>
                 </Action>
               </Control>
+               <!-- ✅ Nouveau bouton Login -->
+              
+              <Control xsi:type="Button" id="AssistantButton">
+                <Label resid="AssistantButton.Label"/>
+                <Supertip>
+                  <Title resid="AssistantButton.Label"/>
+                  <Description resid="AssistantButton.Tooltip"/>
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16"/>
+                  <bt:Image size="32" resid="Icon.32x32"/>
+                  <bt:Image size="80" resid="Icon.80x80"/>
+                </Icon>
+                <Action xsi:type="ShowTaskpane">
+                  <TaskpaneId>ButtonId3</TaskpaneId>
+                  <SourceLocation resid="Assistant.Url"/>
+                </Action>
+            </Control>
+
             </Group>
             <Label resid="customTabLabel1"/>
             <InsertAfter>TabHome</InsertAfter> <!-- optional -->
           </CustomTab>
-
           </ExtensionPoint>
+          <!--Moving forward-->
+          
+          <!--Stopping here-->
 <ExtensionPoint xsi:type="ContextMenu">
   <OfficeMenu id="ContextMenuText">
     <Control xsi:type="Button" id="ContextMenuButton">
@@ -86,8 +107,6 @@
   </OfficeMenu>
 </ExtensionPoint>
 
-
-
         </DesktopFormFactor>
       </Host>
     </Hosts>
@@ -101,19 +120,22 @@
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
         <bt:Url id="Commands.Url" DefaultValue="https://localhost:3005/commands.html"/>
         <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3005/taskpane.html"/>
+        <bt:Url id="Assistant.Url" DefaultValue="https://localhost:3005/assistant.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Task Pane"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Search"/>
         <bt:String id="customTabLabel1" DefaultValue="AL KANONI"/>
         <bt:String id="contextButtonLabel" DefaultValue="Chercher dans AL KANONI"/>
+        <bt:String id="AssistantButton.Label" DefaultValue="Assistant"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="menuDescription" DefaultValue="Utiliser l'assistant IA pour ce texte."/>
         <bt:String id="contextButtonDescription" DefaultValue="Lancer l'analyse par l'assistant IA sur le texte sélectionné."/>     
         <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Task Pane' button to get started."/>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane"/>
+        <bt:String id="AssistantButton.Tooltip" DefaultValue="Click to open the Assistant page"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
