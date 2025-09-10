@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Assistant Juridique</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script src="taskpane1.js" defer></script>
+    <link rel="stylesheet" href="taskpane1.css">
+</head>
+<body>
+    <!--<p id="sideload-msg">Please sideload your addin to see app body.</p>-->
+
+    <div class="login-container" id="login-section">
+        <h2>Connexion</h2>
+        <form id="login-form">
+            <input type="text" id="email" placeholder="Nom d'utilisateur" required />
+            <input type="password" id="password" placeholder="Mot de passe" required />
+            <button type="submit">Se connecter</button>
+        </form>
+        <p id="result"></p>
+    </div>
+
+    <div class="chat-container" id="chat-section" style="display: none;">
+        <div class="chat-header">
+            <img src="/assets/shiftbricks-logo.png" alt="ShiftBricks Logo" class="logo">
+        </div>
+        <div class="chat-messages" id="messages">
+            <div class="message assistant-message">
+                Bonjour ! Je suis votre assistant juridique. Comment puis-je vous aider aujourd'hui ?
+            </div>
+        </div>
+        <div id="loading">⏳ Traitement en cours...</div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Écrivez votre message ici..." />
+            <button id="send-message">Envoyer</button>
+        </div>
+    </div>
+
+  
+</body>
+</html>
